@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 950" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', Inter, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="genArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <polygon points="0,0 10,5 0,10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamondComp" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <polygon points="0,6 6,0 12,6 6,12" fill="#ec4899" stroke="#ec4899" stroke-width="1"/>
+    </marker>
+    <marker id="diamondAgg" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <polygon points="0,6 6,0 12,6 6,12" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold" letter-spacing="1">STUDENT INFORMATION SYSTEM (SIS) — UML CLASS DIAGRAM</text>
+  <text x="600" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Object-Oriented Design Model • Phase 3</text>
+
+  <!-- CLASS: User (Abstract) -->
+  <g transform="translate(480, 80)" filter="url(#shadow)">
+    <rect width="240" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect width="240" height="35" rx="8" fill="#0369a1"/>
+    <text x="120" y="18" text-anchor="middle" fill="#e0f2fe" font-size="11" font-style="italic">&lt;&lt;Abstract&gt;&gt;</text>
+    <text x="120" y="30" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">User</text>
+    
+    <text x="10" y="52" fill="#cbd5e1" font-size="11">- userId: String</text>
+    <text x="10" y="68" fill="#cbd5e1" font-size="11">- username: String</text>
+    <text x="10" y="84" fill="#cbd5e1" font-size="11">- passwordHash: String</text>
+    <text x="10" y="100" fill="#cbd5e1" font-size="11">- role: UserRole</text>
+    <line x1="0" y1="106" x2="240" y2="106" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="122" fill="#38bdf8" font-size="11">+ authenticate(password): Boolean</text>
+    <text x="10" y="138" fill="#38bdf8" font-size="11">+ {abstract} getDashboardRoute(): String</text>
+  </g>
+
+  <!-- CLASS: Admin -->
+  <g transform="translate(60, 290)" filter="url(#shadow)">
+    <rect width="240" height="130" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="240" height="28" rx="8" fill="#1e3a8a"/>
+    <text x="120" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Admin</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- adminId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- department: String</text>
+    <line x1="0" y1="70" x2="240" y2="70" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="86" fill="#38bdf8" font-size="11">+ registerStudent(data): Student</text>
+    <text x="10" y="102" fill="#38bdf8" font-size="11">+ registerFaculty(data): Faculty</text>
+    <text x="10" y="118" fill="#38bdf8" font-size="11">+ assignFacultyToCourse(): Boolean</text>
+  </g>
+
+  <!-- CLASS: Faculty -->
+  <g transform="translate(480, 290)" filter="url(#shadow)">
+    <rect width="240" height="145" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="240" height="28" rx="8" fill="#1e3a8a"/>
+    <text x="120" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Faculty</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- facultyId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- designation: String</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- assignedCourses: List&lt;Course&gt;</text>
+    <line x1="0" y1="86" x2="240" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="102" fill="#38bdf8" font-size="11">+ recordSessionAttendance(): Boolean</text>
+    <text x="10" y="118" fill="#38bdf8" font-size="11">+ submitAssessmentMarks(): Boolean</text>
+    <text x="10" y="134" fill="#38bdf8" font-size="11">+ getAssignedCourses(): List</text>
+  </g>
+
+  <!-- CLASS: Student -->
+  <g transform="translate(890, 290)" filter="url(#shadow)">
+    <rect width="250" height="145" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="250" height="28" rx="8" fill="#1e3a8a"/>
+    <text x="125" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Student</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- studentId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- rollNumber: String</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- enrollments: List&lt;Enrollment&gt;</text>
+    <line x1="0" y1="86" x2="250" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="102" fill="#38bdf8" font-size="11">+ getAttendanceSummary(): Object</text>
+    <text x="10" y="118" fill="#38bdf8" font-size="11">+ getAcademicTranscript(): Object</text>
+    <text x="10" y="134" fill="#38bdf8" font-size="11">+ getEnrolledCourses(): List</text>
+  </g>
+
+  <!-- CLASS: Course -->
+  <g transform="translate(480, 520)" filter="url(#shadow)">
+    <rect width="240" height="135" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
+    <rect width="240" height="28" rx="8" fill="#4338ca"/>
+    <text x="120" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Course</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- courseId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- courseCode: String</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- creditUnits: Integer</text>
+    <line x1="0" y1="86" x2="240" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="102" fill="#818cf8" font-size="11">+ assignFaculty(Faculty): Void</text>
+    <text x="10" y="118" fill="#818cf8" font-size="11">+ getRoster(): List&lt;Student&gt;</text>
+  </g>
+
+  <!-- CLASS: Enrollment (Associative Class) -->
+  <g transform="translate(890, 520)" filter="url(#shadow)">
+    <rect width="250" height="150" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <rect width="250" height="28" rx="8" fill="#7e22ce"/>
+    <text x="125" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Enrollment</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- enrollmentId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- academicTerm: String</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- status: EnrollmentStatus</text>
+    <line x1="0" y1="86" x2="250" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="102" fill="#c084fc" font-size="11">+ calculateAttendancePercentage()</text>
+    <text x="10" y="118" fill="#c084fc" font-size="11">+ calculateTotalMarks(): Float</text>
+    <text x="10" y="134" fill="#c084fc" font-size="11">+ computeFinalGrade(): String</text>
+  </g>
+
+  <!-- CLASS: Attendance -->
+  <g transform="translate(730, 750)" filter="url(#shadow)">
+    <rect width="220" height="130" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5"/>
+    <rect width="220" height="28" rx="8" fill="#be185d"/>
+    <text x="110" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Attendance</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- attendanceId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- sessionDate: Date</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- status: AttendanceStatus</text>
+    <line x1="0" y1="86" x2="220" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="104" fill="#f472b6" font-size="11">+ updateStatus(newStatus): Void</text>
+    <text x="10" y="120" fill="#f472b6" font-size="11">+ isValidSessionDate(): Boolean</text>
+  </g>
+
+  <!-- CLASS: AcademicRecord -->
+  <g transform="translate(980, 750)" filter="url(#shadow)">
+    <rect width="200" height="130" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5"/>
+    <rect width="200" height="28" rx="8" fill="#be185d"/>
+    <text x="100" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">AcademicRecord</text>
+    
+    <text x="10" y="46" fill="#cbd5e1" font-size="11">- recordId: String</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">- scoreObtained: Float</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">- maximumScore: Float</text>
+    <line x1="0" y1="86" x2="200" y2="86" stroke="#334155" stroke-width="1"/>
+    <text x="10" y="104" fill="#f472b6" font-size="11">+ updateScore(newScore): Bool</text>
+    <text x="10" y="120" fill="#f472b6" font-size="11">+ calculatePercentage(): Float</text>
+  </g>
+
+  <!-- Connectors: Generalization (Admin, Faculty, Student -> User) -->
+  <path d="M 180 290 L 180 255 L 600 255 L 600 230" stroke="#38bdf8" stroke-width="1.5" fill="none" marker-end="url(#genArrow)"/>
+  <path d="M 600 290 L 600 230" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <path d="M 1015 290 L 1015 255 L 600 255" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+  <!-- Connector: Faculty -> Course -->
+  <line x1="600" y1="435" x2="600" y2="520" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="610" y="475" fill="#94a3b8" font-size="11">teaches 1 : 0..*</text>
+
+  <!-- Connector: Course -> Enrollment -->
+  <line x1="720" y1="585" x2="890" y2="585" stroke="#a855f7" stroke-width="1.5" marker-start="url(#diamondAgg)"/>
+  <text x="770" y="575" fill="#a855f7" font-size="11">contains 1 : 0..*</text>
+
+  <!-- Connector: Student -> Enrollment -->
+  <line x1="1015" y1="435" x2="1015" y2="520" stroke="#a855f7" stroke-width="1.5" marker-start="url(#diamondAgg)"/>
+  <text x="1025" y="475" fill="#a855f7" font-size="11">holds 1 : 0..*</text>
+
+  <!-- Connectors: Enrollment -> Attendance & AcademicRecord (Composition) -->
+  <path d="M 950 670 L 950 715 L 840 715 L 840 750" stroke="#ec4899" stroke-width="1.5" fill="none" marker-start="url(#diamondComp)"/>
+  <text x="850" y="735" fill="#ec4899" font-size="11">owns 1 : 0..*</text>
+
+  <path d="M 1070 670 L 1070 715 L 1080 715 L 1080 750" stroke="#ec4899" stroke-width="1.5" fill="none" marker-start="url(#diamondComp)"/>
+  <text x="1090" y="735" fill="#ec4899" font-size="11">owns 1 : 0..*</text>
+
+</svg>
