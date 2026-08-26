@@ -1,0 +1,35 @@
+@startuml
+autonumber
+actor "Admin / System" as Client
+participant "EnrollmentController" as Controller
+participant "EnrollmentService" as Service
+participant "IEnrollmentRepository" as EnrollRepo
+participant "Course" as CourseEntity
+participant "Enrollment" as EnrollEntity
+
+Client -> Controller : enrollStudent(studentId, courseId, term)
+activate Controller
+
+Controller -> Service : createEnrollment(studentId, courseId, term)
+activate Service
+
+Service -> EnrollRepo : findByStudentAndCourse(studentId, courseId, term)
+activate EnrollRepo
+EnrollRepo --> Service : null (not enrolled)
+deactivate EnrollRepo
+
+create EnrollEntity
+Service -> EnrollEntity : new(student, course, term, "ACTIVE")
+Service -> CourseEntity : addEnrollment(enrollEntity)
+
+Service -> EnrollRepo : save(enrollEntity)
+activate EnrollRepo
+EnrollRepo --> Service : persistedEnrollment
+deactivate EnrollRepo
+
+Service --> Controller : EnrollmentDTO
+Controller --> Client : 201 Created (Enrollment Details)
+
+deactivate Service
+deactivate Controller
+@enduml\n

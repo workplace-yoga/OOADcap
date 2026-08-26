@@ -1,0 +1,37 @@
+@startuml
+autonumber
+actor "Student" as Student
+participant "StudentPortalController" as Controller
+participant "AcademicService" as Service
+participant "IEnrollmentRepository" as EnrollRepo
+participant "Enrollment" as EnrollEntity
+
+Student -> Controller : getMyAcademicRecords()
+activate Controller
+
+Controller -> Service : getStudentTranscript(studentId)
+activate Service
+
+Service -> EnrollRepo : findAllByStudentId(studentId)
+activate EnrollRepo
+EnrollRepo --> Service : List<Enrollment>
+deactivate EnrollRepo
+
+loop For each Enrollment
+    Service -> EnrollEntity : calculateTotalMarks()
+    activate EnrollEntity
+    EnrollEntity --> Service : totalMarks
+    deactivate EnrollEntity
+
+    Service -> EnrollEntity : computeFinalGrade()
+    activate EnrollEntity
+    EnrollEntity --> Service : letterGrade (e.g. "A")
+    deactivate EnrollEntity
+end
+
+Service --> Controller : TranscriptDTO
+Controller --> Student : 200 OK (Transcript with scores & letter grades)
+
+deactivate Service
+deactivate Controller
+@enduml\n

@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', Inter, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="ucGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="actorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="includeArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold" letter-spacing="1">STUDENT INFORMATION SYSTEM (SIS) — UML USE CASE DIAGRAM</text>
+  <text x="500" y="65" text-anchor="middle" fill="#94a3b8" font-size="13">Object-Oriented Analysis Model • Phase 2</text>
+
+  <!-- System Boundary Box -->
+  <rect x="260" y="90" width="480" height="780" rx="16" fill="url(#boxGrad)" stroke="#334155" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="260" y="90" width="480" height="35" rx="16" fill="#1e293b"/>
+  <text x="500" y="113" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold" letter-spacing="0.5">System Boundary: Student Information System (SIS)</text>
+
+  <!-- Actors -->
+  <!-- Admin Actor -->
+  <g id="actor-admin" transform="translate(110, 240)">
+    <circle cx="0" cy="-25" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="0" y1="-11" x2="0" y2="18" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="-18" y1="-2" x2="18" y2="-2" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="-14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <text x="0" y="65" text-anchor="middle" fill="#f8fafc" font-size="15" font-weight="bold">Admin</text>
+  </g>
+
+  <!-- Faculty Actor -->
+  <g id="actor-faculty" transform="translate(110, 520)">
+    <circle cx="0" cy="-25" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="0" y1="-11" x2="0" y2="18" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="-18" y1="-2" x2="18" y2="-2" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="-14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <text x="0" y="65" text-anchor="middle" fill="#f8fafc" font-size="15" font-weight="bold">Faculty</text>
+  </g>
+
+  <!-- Student Actor -->
+  <g id="actor-student" transform="translate(880, 520)">
+    <circle cx="0" cy="-25" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="0" y1="-11" x2="0" y2="18" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="-18" y1="-2" x2="18" y2="-2" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="-14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <line x1="0" y1="18" x2="14" y2="42" stroke="#38bdf8" stroke-width="3"/>
+    <text x="0" y="65" text-anchor="middle" fill="#f8fafc" font-size="15" font-weight="bold">Student</text>
+  </g>
+
+  <!-- USE CASES -->
+  <!-- Common UC -->
+  <g transform="translate(500, 155)">
+    <ellipse cx="0" cy="0" rx="130" ry="20" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#e0e7ff" font-size="12" font-weight="600">UC-01: Authenticate User</text>
+  </g>
+
+  <g transform="translate(500, 205)">
+    <ellipse cx="0" cy="0" rx="130" ry="20" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#e0e7ff" font-size="12" font-weight="600">UC-02: View Role Dashboard</text>
+  </g>
+
+  <!-- Admin UC -->
+  <g transform="translate(500, 260)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-03: Manage Students</text>
+  </g>
+
+  <g transform="translate(500, 305)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-04: Manage Faculty</text>
+  </g>
+
+  <g transform="translate(500, 350)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-05: Manage Courses</text>
+  </g>
+
+  <g transform="translate(500, 395)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-06: Assign Faculty to Course</text>
+  </g>
+
+  <g transform="translate(500, 440)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-07: Manage Enrollment</text>
+  </g>
+
+  <!-- Faculty UC -->
+  <g transform="translate(500, 500)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-09: View Assigned Courses</text>
+  </g>
+
+  <g transform="translate(500, 550)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-10: Record Session Attendance</text>
+  </g>
+
+  <g transform="translate(500, 600)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-11: Update Attendance &lt;&lt;extend&gt;&gt;</text>
+  </g>
+
+  <g transform="translate(500, 650)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-12: Enter Assessment Marks</text>
+  </g>
+
+  <g transform="translate(500, 700)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-13: Update Marks &lt;&lt;extend&gt;&gt;</text>
+  </g>
+
+  <!-- Student UC -->
+  <g transform="translate(500, 755)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-15: View Personal Profile</text>
+  </g>
+
+  <g transform="translate(500, 795)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-17: View Personal Attendance</text>
+  </g>
+
+  <g transform="translate(500, 835)">
+    <ellipse cx="0" cy="0" rx="130" ry="18" fill="url(#ucGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="0" y="4" text-anchor="middle" fill="#e0e7ff" font-size="12">UC-18: View Marks &amp; Grades</text>
+  </g>
+
+  <!-- Connectors from Admin -->
+  <path d="M 140 240 L 370 205" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 240 L 370 260" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 240 L 370 305" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 240 L 370 350" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 240 L 370 395" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 240 L 370 440" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Connectors from Faculty -->
+  <path d="M 140 520 L 370 205" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 520 L 370 500" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 520 L 370 550" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 140 520 L 370 650" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Connectors from Student -->
+  <path d="M 850 520 L 630 205" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 850 520 L 630 755" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 850 520 L 630 795" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 850 520 L 630 835" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- <<include>> link from UC-02 to UC-01 -->
+  <path d="M 500 187 L 500 175" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#includeArrow)"/>
+  <text x="545" y="185" fill="#38bdf8" font-size="10" font-style="italic">&lt;&lt;include&gt;&gt;</text>
+
+</svg>\n

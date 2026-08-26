@@ -1,0 +1,32 @@
+@startuml
+autonumber
+actor "Student" as Student
+participant "StudentPortalController" as Controller
+participant "AttendanceService" as Service
+participant "IEnrollmentRepository" as EnrollRepo
+participant "Enrollment" as EnrollEntity
+
+Student -> Controller : getMyAttendance()
+activate Controller
+
+Controller -> Service : getStudentAttendance(studentId)
+activate Service
+
+Service -> EnrollRepo : findAllByStudentId(studentId)
+activate EnrollRepo
+EnrollRepo --> Service : List<Enrollment>
+deactivate EnrollRepo
+
+loop For each Enrollment
+    Service -> EnrollEntity : calculateAttendancePercentage()
+    activate EnrollEntity
+    EnrollEntity --> Service : percentage (e.g. 92.5%)
+    deactivate EnrollEntity
+end
+
+Service --> Controller : List<AttendanceSummaryDTO>
+Controller --> Student : 200 OK (Course-wise attendance stats & logs)
+
+deactivate Service
+deactivate Controller
+@enduml\n

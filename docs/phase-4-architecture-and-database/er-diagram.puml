@@ -1,0 +1,111 @@
+@startuml
+skinparam linetype ortho
+skinparam monochrome false
+skinparam shadowing true
+skinparam class {
+    BackgroundColor #1e293b
+    BorderColor #6366f1
+    FontColor #f8fafc
+    AttributeFontColor #94a3b8
+}
+
+entity "users" as users {
+    * user_id : VARCHAR(64) [PK]
+    --
+    * username : VARCHAR(64) [UK]
+    * password_hash : VARCHAR(255)
+    * email : VARCHAR(128) [UK]
+    * role : VARCHAR(20)
+    * is_active : BOOLEAN
+    created_at : TIMESTAMP
+    last_login : TIMESTAMP
+}
+
+entity "admins" as admins {
+    * admin_id : VARCHAR(64) [PK]
+    --
+    * user_id : VARCHAR(64) [FK, UK]
+    * department : VARCHAR(64)
+    office_location : VARCHAR(128)
+}
+
+entity "faculty" as faculty {
+    * faculty_id : VARCHAR(64) [PK]
+    --
+    * user_id : VARCHAR(64) [FK, UK]
+    * full_name : VARCHAR(128)
+    * department : VARCHAR(64)
+    * designation : VARCHAR(64)
+    contact_number : VARCHAR(32)
+}
+
+entity "students" as students {
+    * student_id : VARCHAR(64) [PK]
+    --
+    * user_id : VARCHAR(64) [FK, UK]
+    * roll_number : VARCHAR(32) [UK]
+    * full_name : VARCHAR(128)
+    * department : VARCHAR(64)
+    * current_semester : INTEGER
+    * date_of_birth : DATE
+    contact_number : VARCHAR(32)
+}
+
+entity "courses" as courses {
+    * course_id : VARCHAR(64) [PK]
+    --
+    * course_code : VARCHAR(32) [UK]
+    * title : VARCHAR(128)
+    * credit_units : INTEGER
+    * department : VARCHAR(64)
+    description : TEXT
+    faculty_id : VARCHAR(64) [FK]
+    * is_active : BOOLEAN
+}
+
+entity "enrollments" as enrollments {
+    * enrollment_id : VARCHAR(64) [PK]
+    --
+    * student_id : VARCHAR(64) [FK]
+    * course_id : VARCHAR(64) [FK]
+    * academic_term : VARCHAR(32)
+    * status : VARCHAR(20)
+    enrollment_date : TIMESTAMP
+}
+
+entity "attendance" as attendance {
+    * attendance_id : VARCHAR(64) [PK]
+    --
+    * enrollment_id : VARCHAR(64) [FK]
+    * session_date : DATE
+    * session_slot : INTEGER
+    * status : VARCHAR(20)
+    remarks : VARCHAR(255)
+    recorded_by_faculty_id : VARCHAR(64) [FK]
+    last_modified : TIMESTAMP
+}
+
+entity "academic_records" as records {
+    * record_id : VARCHAR(64) [PK]
+    --
+    * enrollment_id : VARCHAR(64) [FK]
+    * assessment_type : VARCHAR(64)
+    * score_obtained : NUMERIC(5,2)
+    * maximum_score : NUMERIC(5,2)
+    * weightage_percentage : NUMERIC(5,2)
+    feedback_remarks : TEXT
+}
+
+users ||--o| admins : "extends (1:1)"
+users ||--o| faculty : "extends (1:1)"
+users ||--o| students : "extends (1:1)"
+
+faculty ||--o{ courses : "instructs (1:N)"
+students ||--o{ enrollments : "registers (1:N)"
+courses ||--o{ enrollments : "contains (1:N)"
+
+enrollments ||--o{ attendance : "owns (1:N)"
+enrollments ||--o{ records : "owns (1:N)"
+faculty ||--o{ attendance : "records (1:N)"
+
+@enduml\n

@@ -1,0 +1,39 @@
+@startuml
+autonumber
+actor "User (Actor)" as Actor
+participant "AuthController" as Controller
+participant "AuthService" as Service
+participant "IUserRepository" as UserRepo
+participant "User" as UserEntity
+
+Actor -> Controller : login(username, password)
+activate Controller
+
+Controller -> Service : authenticate(username, password)
+activate Service
+
+Service -> UserRepo : findByUsername(username)
+activate UserRepo
+UserRepo --> Service : User entity
+deactivate UserRepo
+
+Service -> UserEntity : authenticate(password)
+activate UserEntity
+UserEntity --> Service : true / false
+deactivate UserEntity
+
+alt Successful Authentication
+    Service -> UserEntity : getDashboardRoute()
+    activate UserEntity
+    UserEntity --> Service : "/role/dashboard"
+    deactivate UserEntity
+    Service --> Controller : AuthToken (JWT) + Dashboard Route
+    Controller --> Actor : 200 OK (Token, Route, UserDetails)
+else Invalid Credentials
+    Service --> Controller : AuthenticationException
+    Controller --> Actor : 401 Unauthorized ("Invalid credentials")
+end
+
+deactivate Service
+deactivate Controller
+@enduml\n

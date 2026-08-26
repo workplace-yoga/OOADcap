@@ -1,0 +1,34 @@
+@startuml
+skinparam node {
+    BackgroundColor #1e293b
+    BorderColor #6366f1
+    FontColor #f8fafc
+}
+skinparam component {
+    BackgroundColor #0f172a
+    BorderColor #38bdf8
+    FontColor #f8fafc
+}
+
+cloud "Internet" as Internet
+
+node "GitHub Pages (Global Edge CDN)" as GHP {
+    component "Single Page Application (SPA)
+[HTML5 / CSS3 / ES6]" as FrontendApp
+}
+
+node "Render Cloud Platform" as Render {
+    component "SIS REST API Service
+[Node.js 20 LTS / Express]" as BackendService
+}
+
+database "Cloud Database Layer" as CloudDB {
+    component "Relational 3NF Storage
+[users, students, courses, enrollments]" as DBStore
+}
+
+Internet --> FrontendApp : HTTPS (Port 443)
+FrontendApp --> BackendService : REST API / JSON (HTTPS + JWT)
+BackendService --> DBStore : TLS Relational Wire Connection
+
+@enduml

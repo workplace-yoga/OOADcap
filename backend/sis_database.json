@@ -1,0 +1,360 @@
+{
+  "users": [
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "password_hash": "$2a$10$SsMfU4l8biHe6Giq968.G.QRHpDgk62T4CmQglnbQ5O5qx5ZdvgHW",
+      "email": "admin@university.edu",
+      "role": "ADMIN",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.591Z",
+      "last_login": "2026-08-26T04:01:29.657Z"
+    },
+    {
+      "user_id": "usr_fac_1",
+      "username": "dr_alan",
+      "password_hash": "$2a$10$RLICg2e29ri4CpVu3c/8UuY187F5aAXSxHeLiP5PV8UX6b8cSDPXi",
+      "email": "alan.turing@university.edu",
+      "role": "FACULTY",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.593Z",
+      "last_login": "2026-08-26T04:01:29.929Z"
+    },
+    {
+      "user_id": "usr_fac_2",
+      "username": "prof_grace",
+      "password_hash": "$2a$10$RLICg2e29ri4CpVu3c/8UuY187F5aAXSxHeLiP5PV8UX6b8cSDPXi",
+      "email": "grace.hopper@university.edu",
+      "role": "FACULTY",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.594Z",
+      "last_login": null
+    },
+    {
+      "user_id": "usr_stu_1",
+      "username": "alice_smith",
+      "password_hash": "$2a$10$.oFcZJ6IWkH4tt6At4wAQe/dBAGxnQB/DNyLzdqCqjHqboHw2DvMC",
+      "email": "alice@student.edu",
+      "role": "STUDENT",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.595Z",
+      "last_login": "2026-08-26T04:01:30.044Z"
+    },
+    {
+      "user_id": "usr_stu_2",
+      "username": "bob_jones",
+      "password_hash": "$2a$10$.oFcZJ6IWkH4tt6At4wAQe/dBAGxnQB/DNyLzdqCqjHqboHw2DvMC",
+      "email": "bob@student.edu",
+      "role": "STUDENT",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.596Z",
+      "last_login": null
+    },
+    {
+      "user_id": "usr_stu_3",
+      "username": "charlie_brown",
+      "password_hash": "$2a$10$.oFcZJ6IWkH4tt6At4wAQe/dBAGxnQB/DNyLzdqCqjHqboHw2DvMC",
+      "email": "charlie@student.edu",
+      "role": "STUDENT",
+      "is_active": true,
+      "created_at": "2026-08-26T03:56:39.597Z",
+      "last_login": null
+    },
+    {
+      "user_id": "usr_stu_1787716675719",
+      "username": "emma_watson",
+      "password_hash": "$2a$10$TsyhkQoKAoUKnlAqjb.zVudqvKNyxk4HSiZqHQlvTosuzeegpU2K.",
+      "email": "emma@student.edu",
+      "role": "STUDENT",
+      "is_active": true,
+      "created_at": "2026-08-26T03:57:55.834Z",
+      "last_login": null
+    }
+  ],
+  "admins": [
+    {
+      "admin_id": "adm_001",
+      "user_id": "usr_admin",
+      "department": "Central Academic Administration",
+      "office_location": "Main Tower, Room 402"
+    }
+  ],
+  "faculty": [
+    {
+      "faculty_id": "fac_001",
+      "user_id": "usr_fac_1",
+      "full_name": "Dr. Alan Turing",
+      "department": "Computer Science",
+      "designation": "Professor",
+      "contact_number": "+1-555-0101"
+    },
+    {
+      "faculty_id": "fac_002",
+      "user_id": "usr_fac_2",
+      "full_name": "Prof. Grace Hopper",
+      "department": "Software Engineering",
+      "designation": "Associate Professor",
+      "contact_number": "+1-555-0102"
+    }
+  ],
+  "students": [
+    {
+      "student_id": "stu_001",
+      "user_id": "usr_stu_1",
+      "roll_number": "CS2026001",
+      "full_name": "Alice Smith",
+      "department": "Computer Science",
+      "current_semester": 4,
+      "date_of_birth": "2004-04-12",
+      "contact_number": "+1-555-0204"
+    },
+    {
+      "student_id": "stu_002",
+      "user_id": "usr_stu_2",
+      "roll_number": "CS2026002",
+      "full_name": "Bob Jones",
+      "department": "Computer Science",
+      "current_semester": 4,
+      "date_of_birth": "2004-04-12",
+      "contact_number": "+1-555-0204"
+    },
+    {
+      "student_id": "stu_003",
+      "user_id": "usr_stu_3",
+      "roll_number": "CS2026003",
+      "full_name": "Charlie Brown",
+      "department": "Computer Science",
+      "current_semester": 4,
+      "date_of_birth": "2004-04-12",
+      "contact_number": "+1-555-0204"
+    },
+    {
+      "student_id": "stu_1787716675719",
+      "user_id": "usr_stu_1787716675719",
+      "roll_number": "CS2026099",
+      "full_name": "Emma Watson",
+      "department": "Computer Science",
+      "current_semester": 4,
+      "date_of_birth": "2004-01-01",
+      "contact_number": ""
+    }
+  ],
+  "courses": [
+    {
+      "course_id": "crs_001",
+      "course_code": "CS301",
+      "title": "Object-Oriented Analysis and Design",
+      "credit_units": 4,
+      "department": "Computer Science",
+      "description": "Principles of domain modeling, UML diagrams, design patterns, and decoupled software architecture.",
+      "faculty_id": "fac_001",
+      "is_active": true
+    },
+    {
+      "course_id": "crs_002",
+      "course_code": "CS302",
+      "title": "Database Management Systems",
+      "credit_units": 3,
+      "department": "Computer Science",
+      "description": "Relational algebra, SQL, normalization (3NF), transactions, and indexed query optimization.",
+      "faculty_id": "fac_002",
+      "is_active": true
+    },
+    {
+      "course_id": "crs_1787716890255",
+      "course_code": "CS304",
+      "title": "Compiler Construction",
+      "credit_units": 4,
+      "department": "Computer Science",
+      "description": "Lexical analysis, syntax trees, and code generation.",
+      "faculty_id": "fac_001",
+      "is_active": true
+    }
+  ],
+  "enrollments": [
+    {
+      "enrollment_id": "enr_001",
+      "student_id": "stu_001",
+      "course_id": "crs_001",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:56:39.599Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_002",
+      "student_id": "stu_002",
+      "course_id": "crs_001",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:56:39.599Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_003",
+      "student_id": "stu_003",
+      "course_id": "crs_001",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:56:39.600Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_004",
+      "student_id": "stu_001",
+      "course_id": "crs_002",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:56:39.600Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_005",
+      "student_id": "stu_002",
+      "course_id": "crs_002",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:56:39.600Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_1787716675855_446",
+      "student_id": "stu_1787716675719",
+      "course_id": "crs_001",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T03:57:55.855Z",
+      "status": "ACTIVE"
+    },
+    {
+      "enrollment_id": "enr_1787716890266_609",
+      "student_id": "stu_001",
+      "course_id": "crs_1787716890255",
+      "academic_term": "Fall 2026",
+      "enrollment_date": "2026-08-26T04:01:30.266Z",
+      "status": "ACTIVE"
+    }
+  ],
+  "attendance": [
+    {
+      "attendance_id": "att_001",
+      "enrollment_id": "enr_001",
+      "session_date": "2026-08-20",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "On time",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:56:39.601Z"
+    },
+    {
+      "attendance_id": "att_002",
+      "enrollment_id": "enr_001",
+      "session_date": "2026-08-22",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "On time",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:56:39.601Z"
+    },
+    {
+      "attendance_id": "att_003",
+      "enrollment_id": "enr_002",
+      "session_date": "2026-08-20",
+      "session_slot": 1,
+      "status": "ABSENT",
+      "remarks": "Sick leave",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:56:39.602Z"
+    },
+    {
+      "attendance_id": "att_004",
+      "enrollment_id": "enr_002",
+      "session_date": "2026-08-22",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "On time",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:56:39.602Z"
+    },
+    {
+      "attendance_id": "att_1787716675983_62",
+      "enrollment_id": "enr_001",
+      "session_date": "2026-08-26",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "Present",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:57:55.983Z"
+    },
+    {
+      "attendance_id": "att_1787716675987_972",
+      "enrollment_id": "enr_1787716675855_446",
+      "session_date": "2026-08-26",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "Present",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T03:57:55.987Z"
+    },
+    {
+      "attendance_id": "att_1787716890275_855",
+      "enrollment_id": "enr_1787716890266_609",
+      "session_date": "2026-08-26",
+      "session_slot": 1,
+      "status": "PRESENT",
+      "remarks": "Active participant",
+      "recorded_by_faculty_id": "fac_001",
+      "last_modified": "2026-08-26T04:01:30.275Z"
+    }
+  ],
+  "academic_records": [
+    {
+      "record_id": "rec_001",
+      "enrollment_id": "enr_001",
+      "assessment_type": "Assignment 1 (UML Class Modeling)",
+      "score_obtained": 95,
+      "maximum_score": 100,
+      "weightage_percentage": 20,
+      "feedback_remarks": "Excellent class diagram layout and multiplicity design."
+    },
+    {
+      "record_id": "rec_002",
+      "enrollment_id": "enr_001",
+      "assessment_type": "Midterm Examination",
+      "score_obtained": 88,
+      "maximum_score": 100,
+      "weightage_percentage": 30,
+      "feedback_remarks": "Good understanding of SOLID principles."
+    },
+    {
+      "record_id": "rec_003",
+      "enrollment_id": "enr_002",
+      "assessment_type": "Assignment 1 (UML Class Modeling)",
+      "score_obtained": 78,
+      "maximum_score": 100,
+      "weightage_percentage": 20,
+      "feedback_remarks": "Refine aggregation vs composition semantics."
+    },
+    {
+      "record_id": "rec_1787716675996_887",
+      "enrollment_id": "enr_001",
+      "assessment_type": "Continuous Lab Assessment 1",
+      "score_obtained": 48,
+      "maximum_score": 50,
+      "weightage_percentage": 15,
+      "feedback_remarks": ""
+    },
+    {
+      "record_id": "rec_1787716676001_14",
+      "enrollment_id": "enr_1787716675855_446",
+      "assessment_type": "Continuous Lab Assessment 1",
+      "score_obtained": 45,
+      "maximum_score": 50,
+      "weightage_percentage": 15,
+      "feedback_remarks": ""
+    },
+    {
+      "record_id": "rec_1787716890289_918",
+      "enrollment_id": "enr_1787716890266_609",
+      "assessment_type": "Quiz 1 (Syntax Analysis)",
+      "score_obtained": 19,
+      "maximum_score": 20,
+      "weightage_percentage": 10,
+      "feedback_remarks": "Flawless BNF grammar"
+    }
+  ]
+}

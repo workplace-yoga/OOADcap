@@ -1,0 +1,4 @@
+node_modules/
+.env
+sis_database.sqlite
+*.log

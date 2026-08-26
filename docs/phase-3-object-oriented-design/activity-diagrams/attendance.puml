@@ -1,0 +1,24 @@
+@startuml
+start
+:Faculty selects assigned Course & Session Date;
+:System retrieves active Enrolled Student Roster;
+:Faculty marks Status (Present / Absent / Late / Excused);
+:Faculty submits Attendance Register;
+if (All students assigned valid status?) then (yes)
+    :Validate session date is not in future;
+    if (Valid date?) then (yes)
+        :Instantiate Attendance objects for each Enrollment;
+        :Append Attendance to Enrollments;
+        :Recalculate Course Attendance Percentages;
+        :Persist Updated Enrollments;
+        :Display "Attendance Recorded Successfully";
+        stop
+    else (no)
+        :Display "Invalid Session Date" Error;
+        stop
+    endif
+else (no)
+    :Display "Incomplete Attendance Register" Error;
+    stop
+endif
+@enduml\n

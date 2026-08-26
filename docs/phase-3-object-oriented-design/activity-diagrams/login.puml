@@ -1,0 +1,27 @@
+@startuml
+start
+:User inputs Username & Password;
+:System validates non-empty inputs;
+if (Inputs valid?) then (yes)
+    :Query User Repository;
+    if (User exists & isActive?) then (yes)
+        :Verify password against stored hash;
+        if (Password matches?) then (yes)
+            :Generate JWT Session Token;
+            :Query polymorphic getDashboardRoute();
+            :Redirect User to specific Dashboard;
+            stop
+        else (no)
+            :Increment failed login count;
+            :Display "Invalid Credentials" Alert;
+            stop
+        endif
+    else (no)
+        :Display "Account Not Found / Inactive" Alert;
+        stop
+    endif
+else (no)
+    :Display "Fields Required" Validation Error;
+    stop
+endif
+@enduml\n

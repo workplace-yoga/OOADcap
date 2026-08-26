@@ -1,0 +1,39 @@
+@startuml
+autonumber
+actor "Faculty" as Faculty
+participant "MarksController" as Controller
+participant "AcademicService" as Service
+participant "IEnrollmentRepository" as EnrollRepo
+participant "Enrollment" as EnrollEntity
+participant "AcademicRecord" as MarkEntity
+
+Faculty -> Controller : enterMarks(courseId, assessmentType, maxScore, entries)
+activate Controller
+
+Controller -> Service : submitMarks(facultyId, courseId, assessmentType, maxScore, entries)
+activate Service
+
+loop For each student mark entry
+    Service -> EnrollRepo : findByStudentAndCourse(entry.studentId, courseId)
+    activate EnrollRepo
+    EnrollRepo --> Service : Enrollment
+    deactivate EnrollRepo
+
+    create MarkEntity
+    Service -> MarkEntity : new(assessmentType, entry.score, maxScore, weightage)
+    Service -> MarkEntity : isValidScore()
+    activate MarkEntity
+    MarkEntity --> Service : true
+    deactivate MarkEntity
+
+    Service -> EnrollEntity : addAcademicRecord(MarkEntity)
+    Service -> EnrollEntity : computeFinalGrade()
+    Service -> EnrollRepo : save(Enrollment)
+end
+
+Service --> Controller : MarksSubmissionDTO
+Controller --> Faculty : 200 OK ("Marks submitted successfully")
+
+deactivate Service
+deactivate Controller
+@enduml\n

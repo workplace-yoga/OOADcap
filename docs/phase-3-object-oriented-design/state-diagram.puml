@@ -1,0 +1,44 @@
+@startuml
+skinparam state {
+    BackgroundColor #1e293b
+    BorderColor #6366f1
+    FontColor #f8fafc
+}
+
+[*] --> PENDING : Student Registers / Enrolled
+
+state PENDING {
+    PENDING : Enrollment record initialized
+    PENDING : Prerequisites / Fee checks pending
+}
+
+PENDING --> ACTIVE : Admin Approves / Term Starts
+PENDING --> REJECTED : Registration Cancelled
+
+state ACTIVE {
+    ACTIVE : Attendance being recorded
+    ACTIVE : Continuous marks entered
+    ACTIVE : Student actively participating
+}
+
+ACTIVE --> DROPPED : Student Drops Course
+ACTIVE --> COMPLETED : Term Ends & Final Grades Submitted
+
+state COMPLETED {
+    COMPLETED : Final Letter Grade Calculated
+    COMPLETED : Records archived for transcript
+}
+
+state DROPPED {
+    DROPPED : Enrollment marked inactive
+    DROPPED : Excluded from final GPA
+}
+
+state REJECTED {
+    REJECTED : Removed from course roster
+}
+
+COMPLETED --> [*]
+DROPPED --> [*]
+REJECTED --> [*]
+@enduml\n

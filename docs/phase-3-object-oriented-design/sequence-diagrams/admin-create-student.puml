@@ -1,0 +1,34 @@
+@startuml
+autonumber
+actor "Admin" as Admin
+participant "StudentController" as Controller
+participant "StudentService" as Service
+participant "Student" as StudentEntity
+participant "IStudentRepository" as StudentRepo
+participant "IUserRepository" as UserRepo
+
+Admin -> Controller : createStudent(studentDTO)
+activate Controller
+
+Controller -> Service : registerStudent(studentDTO)
+activate Service
+
+Service -> StudentRepo : existsByRollNumber(studentDTO.rollNo)
+activate StudentRepo
+StudentRepo --> Service : false (no duplicate)
+deactivate StudentRepo
+
+create StudentEntity
+Service -> StudentEntity : new(studentDTO)
+Service -> UserRepo : save(userCredentials)
+Service -> StudentRepo : save(studentEntity)
+activate StudentRepo
+StudentRepo --> Service : persistedStudent
+deactivate StudentRepo
+
+Service --> Controller : StudentResponseDTO
+Controller --> Admin : 201 Created (Student Details)
+
+deactivate Service
+deactivate Controller
+@enduml\n

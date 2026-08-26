@@ -1,0 +1,172 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam monochrome false
+skinparam shadowing true
+skinparam class {
+    BackgroundColor #1e293b
+    BorderColor #6366f1
+    FontColor #f8fafc
+    AttributeFontColor #94a3b8
+    AttributeFontSize 11
+    FontSize 13
+}
+
+enum UserRole {
+    ADMIN
+    FACULTY
+    STUDENT
+}
+
+enum AttendanceStatus {
+    PRESENT
+    ABSENT
+    LATE
+    EXCUSED
+}
+
+enum EnrollmentStatus {
+    ACTIVE
+    COMPLETED
+    DROPPED
+}
+
+abstract class User {
+    - userId: String
+    - username: String
+    - passwordHash: String
+    - email: String
+    - role: UserRole
+    - isActive: Boolean
+    - lastLogin: DateTime
+    + authenticate(plainPassword: String): Boolean
+    + changePassword(oldPass: String, newPass: String): Boolean
+    + {abstract} getDashboardRoute(): String
+    + {abstract} getAccessPermissions(): List<String>
+    + deactivate(): Void
+    + getProfileSummary(): Map<String, Object>
+}
+
+class Admin {
+    - adminId: String
+    - department: String
+    - officeLocation: String
+    + getDashboardRoute(): String
+    + getAccessPermissions(): List<String>
+    + registerStudent(studentData: Object): Student
+    + registerFaculty(facultyData: Object): Faculty
+    + createCourse(courseData: Object): Course
+    + assignFacultyToCourse(courseId: String, facultyId: String): Boolean
+    + enrollStudentInCourse(studentId: String, courseId: String): Enrollment
+    + generateSystemSummaryReport(): Object
+}
+
+class Faculty {
+    - facultyId: String
+    - fullName: String
+    - department: String
+    - designation: String
+    - contactNumber: String
+    - assignedCourses: List<Course>
+    + getDashboardRoute(): String
+    + getAccessPermissions(): List<String>
+    + getAssignedCourses(): List<Course>
+    + getEnrolledStudentsForCourse(courseId: String): List<Student>
+    + recordSessionAttendance(courseId: String, date: Date, entries: List<Object>): Boolean
+    + updateSessionAttendance(attendanceId: String, newStatus: AttendanceStatus, reason: String): Boolean
+    + submitAssessmentMarks(courseId: String, assessmentType: String, marksList: List<Object>): Boolean
+    + updateAssessmentMark(recordId: String, newScore: Float): Boolean
+}
+
+class Student {
+    - studentId: String
+    - rollNumber: String
+    - fullName: String
+    - department: String
+    - currentSemester: Integer
+    - dateOfBirth: Date
+    - contactNumber: String
+    - enrollments: List<Enrollment>
+    + getDashboardRoute(): String
+    + getAccessPermissions(): List<String>
+    + getEnrolledCourses(): List<Course>
+    + getAttendanceSummary(courseId: String): Object
+    + getAcademicTranscript(): Object
+    + updateContactInfo(newContact: String): Boolean
+}
+
+class Course {
+    - courseId: String
+    - courseCode: String
+    - title: String
+    - creditUnits: Integer
+    - department: String
+    - description: String
+    - assignedFaculty: Faculty
+    - enrollments: List<Enrollment>
+    - isActive: Boolean
+    + assignFaculty(faculty: Faculty): Void
+    + addEnrollment(enrollment: Enrollment): Boolean
+    + removeEnrollment(enrollmentId: String): Boolean
+    + getRoster(): List<Student>
+    + getActiveEnrollmentCount(): Integer
+    + updateCourseDetails(title: String, credits: Integer, desc: String): Void
+    + archiveCourse(): Void
+}
+
+class Enrollment {
+    - enrollmentId: String
+    - student: Student
+    - course: Course
+    - academicTerm: String
+    - enrollmentDate: DateTime
+    - status: EnrollmentStatus
+    - attendanceRecords: List<Attendance>
+    - academicRecords: List<AcademicRecord>
+    + addAttendance(attendance: Attendance): Void
+    + addAcademicRecord(record: AcademicRecord): Void
+    + calculateAttendancePercentage(): Float
+    + calculateTotalMarks(): Float
+    + computeFinalGrade(): String
+    + dropEnrollment(): Void
+    + completeEnrollment(): Void
+}
+
+class Attendance {
+    - attendanceId: String
+    - sessionDate: Date
+    - sessionSlot: Integer
+    - status: AttendanceStatus
+    - remarks: String
+    - recordedByFacultyId: String
+    - lastModified: DateTime
+    + updateStatus(newStatus: AttendanceStatus, reason: String): Void
+    + isValidSessionDate(): Boolean
+    + getAttendanceSummary(): Map<String, Object>
+}
+
+class AcademicRecord {
+    - recordId: String
+    - assessmentType: String
+    - scoreObtained: Float
+    - maximumScore: Float
+    - weightagePercentage: Float
+    - feedbackRemarks: String
+    + updateScore(newScore: Float): Boolean
+    + calculatePercentage(): Float
+    + calculateWeightedScore(): Float
+    + isValidScore(): Boolean
+}
+
+User <|-- Admin
+User <|-- Faculty
+User <|-- Student
+
+Faculty "1" --> "0..*" Course : teaches
+Student "1" o-- "0..*" Enrollment : holds
+Course "1" o-- "0..*" Enrollment : registers
+
+Enrollment "1" *-- "0..*" Attendance : owns
+Enrollment "1" *-- "0..*" AcademicRecord : owns
+
+@enduml\n

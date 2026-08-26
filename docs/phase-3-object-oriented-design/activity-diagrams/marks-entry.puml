@@ -1,0 +1,19 @@
+@startuml
+start
+:Faculty selects Course & Assessment Component;
+:Faculty enters Max Score & Weightage;
+:Faculty inputs Student Scores;
+:System validates scores against bounds [0 .. MaxScore];
+if (All scores valid?) then (yes)
+    :Create/Update AcademicRecord per Enrollment;
+    :Compute aggregate component totals;
+    :Calculate tentative Letter Grades (A, B, C, F);
+    :Persist Academic Records;
+    :Display "Marks Saved & Grades Updated";
+    stop
+else (no)
+    :Highlight Invalid Scores (> Max or < 0);
+    :Prompt Faculty to correct entries;
+    stop
+endif
+@enduml\n

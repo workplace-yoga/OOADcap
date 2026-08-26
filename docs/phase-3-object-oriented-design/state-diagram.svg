@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', Inter, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="35" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">ENROLLMENT LIFECYCLE — UML STATE MACHINE</text>
+  <text x="450" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">Object State Transitions • Phase 3</text>
+
+  <!-- Initial State -->
+  <circle cx="60" cy="190" r="14" fill="#38bdf8"/>
+
+  <!-- PENDING State -->
+  <g transform="translate(140, 150)" filter="url(#shadow)">
+    <rect width="140" height="80" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="70" y="30" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">PENDING</text>
+    <text x="70" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Awaiting Approval</text>
+  </g>
+
+  <!-- ACTIVE State -->
+  <g transform="translate(380, 150)" filter="url(#shadow)">
+    <rect width="160" height="80" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="bold">ACTIVE</text>
+    <text x="80" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Attendance &amp; Marks</text>
+  </g>
+
+  <!-- COMPLETED State -->
+  <g transform="translate(640, 150)" filter="url(#shadow)">
+    <rect width="150" height="80" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="75" y="30" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">COMPLETED</text>
+    <text x="75" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Final Grade Locked</text>
+  </g>
+
+  <!-- DROPPED State -->
+  <g transform="translate(380, 310)" filter="url(#shadow)">
+    <rect width="160" height="70" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="80" y="30" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="bold">DROPPED</text>
+    <text x="80" y="50" text-anchor="middle" fill="#94a3b8" font-size="11">Term Dropped</text>
+  </g>
+
+  <!-- Final States -->
+  <circle cx="850" cy="190" r="14" fill="none" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="850" cy="190" r="9" fill="#a855f7"/>
+
+  <circle cx="610" cy="345" r="14" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="610" cy="345" r="9" fill="#ef4444"/>
+
+  <!-- Transitions -->
+  <!-- Start -> PENDING -->
+  <line x1="74" y1="190" x2="135" y2="190" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- PENDING -> ACTIVE -->
+  <line x1="280" y1="190" x2="375" y2="190" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="330" y="180" text-anchor="middle" fill="#38bdf8" font-size="11">Approve</text>
+
+  <!-- ACTIVE -> COMPLETED -->
+  <line x1="540" y1="190" x2="635" y2="190" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="590" y="180" text-anchor="middle" fill="#38bdf8" font-size="11">Term End</text>
+
+  <!-- COMPLETED -> Final -->
+  <line x1="790" y1="190" x2="833" y2="190" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ACTIVE -> DROPPED -->
+  <line x1="460" y1="230" x2="460" y2="305" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="495" y="270" text-anchor="middle" fill="#ef4444" font-size="11">Drop Course</text>
+
+  <!-- DROPPED -> Final -->
+  <line x1="540" y1="345" x2="593" y2="345" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+</svg>

@@ -1,0 +1,41 @@
+@startuml
+autonumber
+actor "Admin" as Admin
+participant "CourseController" as Controller
+participant "CourseService" as Service
+participant "ICourseRepository" as CourseRepo
+participant "IFacultyRepository" as FacultyRepo
+participant "Course" as CourseEntity
+
+Admin -> Controller : assignFaculty(courseId, facultyId)
+activate Controller
+
+Controller -> Service : assignFacultyToCourse(courseId, facultyId)
+activate Service
+
+Service -> CourseRepo : findById(courseId)
+activate CourseRepo
+CourseRepo --> Service : Course
+deactivate CourseRepo
+
+Service -> FacultyRepo : findById(facultyId)
+activate FacultyRepo
+FacultyRepo --> Service : Faculty
+deactivate FacultyRepo
+
+Service -> CourseEntity : assignFaculty(Faculty)
+activate CourseEntity
+CourseEntity --> Service : void
+deactivate CourseEntity
+
+Service -> CourseRepo : save(CourseEntity)
+activate CourseRepo
+CourseRepo --> Service : updatedCourse
+deactivate CourseRepo
+
+Service --> Controller : AssignmentSuccessDTO
+Controller --> Admin : 200 OK ("Faculty assigned successfully")
+
+deactivate Service
+deactivate Controller
+@enduml\n

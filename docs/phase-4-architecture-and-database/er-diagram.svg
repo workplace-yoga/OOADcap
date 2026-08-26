@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', Inter, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <text x="600" y="35" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold" letter-spacing="1">STUDENT INFORMATION SYSTEM (SIS) — RELATIONAL ER DIAGRAM</text>
+  <text x="600" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">3NF Relational Database Schema • Phase 4</text>
+
+  <!-- TABLE: users -->
+  <g transform="translate(480, 80)" filter="url(#shadow)">
+    <rect width="240" height="155" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect width="240" height="28" rx="8" fill="#0284c7"/>
+    <text x="120" y="19" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">users</text>
+    <text x="10" y="46" fill="#38bdf8" font-size="11">🔑 user_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="62" fill="#cbd5e1" font-size="11">✦ username: VARCHAR(64) [UK]</text>
+    <text x="10" y="78" fill="#cbd5e1" font-size="11">✦ password_hash: VARCHAR(255)</text>
+    <text x="10" y="94" fill="#cbd5e1" font-size="11">✦ email: VARCHAR(128) [UK]</text>
+    <text x="10" y="110" fill="#cbd5e1" font-size="11">✦ role: VARCHAR(20)</text>
+    <text x="10" y="126" fill="#cbd5e1" font-size="11">✦ is_active: BOOLEAN</text>
+    <text x="10" y="142" fill="#94a3b8" font-size="10">✦ created_at: TIMESTAMP</text>
+  </g>
+
+  <!-- TABLE: admins -->
+  <g transform="translate(60, 290)" filter="url(#shadow)">
+    <rect width="240" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="240" height="26" rx="8" fill="#0369a1"/>
+    <text x="120" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">admins</text>
+    <text x="10" y="44" fill="#38bdf8" font-size="11">🔑 admin_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 user_id: VARCHAR(64) [FK, UK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ department: VARCHAR(64)</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ office_location: VARCHAR(128)</text>
+  </g>
+
+  <!-- TABLE: faculty -->
+  <g transform="translate(480, 290)" filter="url(#shadow)">
+    <rect width="240" height="125" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="240" height="26" rx="8" fill="#0369a1"/>
+    <text x="120" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">faculty</text>
+    <text x="10" y="44" fill="#38bdf8" font-size="11">🔑 faculty_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 user_id: VARCHAR(64) [FK, UK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ full_name: VARCHAR(128)</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ department: VARCHAR(64)</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ designation: VARCHAR(64)</text>
+  </g>
+
+  <!-- TABLE: students -->
+  <g transform="translate(890, 290)" filter="url(#shadow)">
+    <rect width="250" height="145" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="250" height="26" rx="8" fill="#0369a1"/>
+    <text x="125" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">students</text>
+    <text x="10" y="44" fill="#38bdf8" font-size="11">🔑 student_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 user_id: VARCHAR(64) [FK, UK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ roll_number: VARCHAR(32) [UK]</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ full_name: VARCHAR(128)</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ department: VARCHAR(64)</text>
+    <text x="10" y="124" fill="#cbd5e1" font-size="11">✦ current_semester: INT</text>
+  </g>
+
+  <!-- TABLE: courses -->
+  <g transform="translate(480, 490)" filter="url(#shadow)">
+    <rect width="240" height="145" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
+    <rect width="240" height="26" rx="8" fill="#4338ca"/>
+    <text x="120" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">courses</text>
+    <text x="10" y="44" fill="#818cf8" font-size="11">🔑 course_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#cbd5e1" font-size="11">✦ course_code: VARCHAR(32) [UK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ title: VARCHAR(128)</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ credit_units: INTEGER</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ department: VARCHAR(64)</text>
+    <text x="10" y="124" fill="#ec4899" font-size="11">🔗 faculty_id: VARCHAR(64) [FK]</text>
+  </g>
+
+  <!-- TABLE: enrollments -->
+  <g transform="translate(890, 490)" filter="url(#shadow)">
+    <rect width="250" height="135" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <rect width="250" height="26" rx="8" fill="#7e22ce"/>
+    <text x="125" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">enrollments</text>
+    <text x="10" y="44" fill="#c084fc" font-size="11">🔑 enrollment_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 student_id: VARCHAR(64) [FK]</text>
+    <text x="10" y="76" fill="#ec4899" font-size="11">🔗 course_id: VARCHAR(64) [FK]</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ academic_term: VARCHAR(32)</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ status: VARCHAR(20)</text>
+  </g>
+
+  <!-- TABLE: attendance -->
+  <g transform="translate(730, 710)" filter="url(#shadow)">
+    <rect width="220" height="135" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5"/>
+    <rect width="220" height="26" rx="8" fill="#be185d"/>
+    <text x="110" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">attendance</text>
+    <text x="10" y="44" fill="#f472b6" font-size="11">🔑 attendance_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 enrollment_id: VARCHAR(64) [FK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ session_date: DATE</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ session_slot: INTEGER</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ status: VARCHAR(20)</text>
+  </g>
+
+  <!-- TABLE: academic_records -->
+  <g transform="translate(980, 710)" filter="url(#shadow)">
+    <rect width="200" height="135" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5"/>
+    <rect width="200" height="26" rx="8" fill="#be185d"/>
+    <text x="100" y="18" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">academic_records</text>
+    <text x="10" y="44" fill="#f472b6" font-size="11">🔑 record_id: VARCHAR(64) [PK]</text>
+    <text x="10" y="60" fill="#ec4899" font-size="11">🔗 enrollment_id: VARCHAR(64) [FK]</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">✦ assessment_type: VARCHAR(64)</text>
+    <text x="10" y="92" fill="#cbd5e1" font-size="11">✦ score_obtained: NUMERIC</text>
+    <text x="10" y="108" fill="#cbd5e1" font-size="11">✦ maximum_score: NUMERIC</text>
+  </g>
+
+  <!-- Relationship Lines -->
+  <!-- users -> admins, faculty, students -->
+  <path d="M 480 150 L 180 150 L 180 290" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <line x1="600" y1="235" x2="600" y2="290" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 720 150 L 1015 150 L 1015 290" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+  <!-- faculty -> courses -->
+  <line x1="600" y1="415" x2="600" y2="490" stroke="#ec4899" stroke-width="1.5"/>
+
+  <!-- courses -> enrollments -->
+  <line x1="720" y1="550" x2="890" y2="550" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- students -> enrollments -->
+  <line x1="1015" y1="435" x2="1015" y2="490" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- enrollments -> attendance & academic_records -->
+  <path d="M 950 625 L 950 670 L 840 670 L 840 710" stroke="#ec4899" stroke-width="1.5" fill="none"/>
+  <path d="M 1070 625 L 1070 670 L 1080 670 L 1080 710" stroke="#ec4899" stroke-width="1.5" fill="none"/>
+
+</svg>

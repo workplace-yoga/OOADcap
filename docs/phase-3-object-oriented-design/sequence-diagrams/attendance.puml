@@ -1,0 +1,39 @@
+@startuml
+autonumber
+actor "Faculty" as Faculty
+participant "AttendanceController" as Controller
+participant "AttendanceService" as Service
+participant "ICourseRepository" as CourseRepo
+participant "IEnrollmentRepository" as EnrollRepo
+participant "Enrollment" as EnrollEntity
+participant "Attendance" as AttendanceEntity
+
+Faculty -> Controller : recordAttendance(courseId, date, slot, entries)
+activate Controller
+
+Controller -> Service : submitAttendance(facultyId, courseId, date, slot, entries)
+activate Service
+
+Service -> CourseRepo : findById(courseId)
+activate CourseRepo
+CourseRepo --> Service : Course (verify faculty is instructor)
+deactivate CourseRepo
+
+loop For each student entry
+    Service -> EnrollRepo : findByStudentAndCourse(entry.studentId, courseId)
+    activate EnrollRepo
+    EnrollRepo --> Service : Enrollment
+    deactivate EnrollRepo
+
+    create AttendanceEntity
+    Service -> AttendanceEntity : new(date, slot, entry.status, facultyId)
+    Service -> EnrollEntity : addAttendance(AttendanceEntity)
+    Service -> EnrollRepo : save(Enrollment)
+end
+
+Service --> Controller : AttendanceSubmissionDTO
+Controller --> Faculty : 200 OK ("Attendance recorded successfully")
+
+deactivate Service
+deactivate Controller
+@enduml\n

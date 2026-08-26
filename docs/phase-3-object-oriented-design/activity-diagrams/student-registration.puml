@@ -1,0 +1,22 @@
+@startuml
+start
+:Admin enters Student Profile & Credentials;
+:System validates email format & mandatory fields;
+if (Fields Valid?) then (yes)
+    :Check for Roll Number & Email Uniqueness;
+    if (Unique?) then (yes)
+        :Hash initial password;
+        :Instantiate User (STUDENT role);
+        :Instantiate Student Domain Entity;
+        :Persist User & Student in Repositories;
+        :Return 201 Created & Refresh Directory;
+        stop
+    else (no)
+        :Display "Roll Number / Email Collision" Error;
+        stop
+    endif
+else (no)
+    :Display Validation Errors;
+    stop
+endif
+@enduml\n
