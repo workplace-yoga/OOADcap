@@ -12,7 +12,7 @@ class ApiClient {
       this.baseUrl = 'http://localhost:5000/api/v1';
     } else {
       // Production Render Backend URL
-      this.baseUrl = 'https://sis-ooad-backend.onrender.com/api/v1';
+      this.baseUrl = 'https://ooadcap.onrender.com/api/v1';
     }
   }
 
