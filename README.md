@@ -12,8 +12,8 @@ The **Student Information System (SIS)** is a centralized, web-based software pl
 ## 🌐 Production Cloud Deployment URLs
 
 - **Live Web Application (Frontend)**: [https://workplace-yoga.github.io/OOADcap/](https://workplace-yoga.github.io/OOADcap/) *(Hosted on GitHub Pages)*
-- **Live Backend REST API**: [https://ooadcap.onrender.com/api/v1](https://ooadcap.onrender.com/api/v1) *(Hosted on Render)*
-- **API Health Check Endpoint**: [https://ooadcap.onrender.com/api/v1/health](https://ooadcap.onrender.com/api/v1/health)
+- **Live Backend REST API**: [https://ooadcap-1.onrender.com/api/v1](https://ooadcap-1.onrender.com/api/v1) *(Hosted on Render)*
+- **API Health Check Endpoint**: [https://ooadcap-1.onrender.com/api/v1/health](https://ooadcap-1.onrender.com/api/v1/health)
 
 ---
 
